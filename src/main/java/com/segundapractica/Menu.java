@@ -31,7 +31,15 @@ public class Menu {
                 case 2:
                     break;
                 case 3:
+                    System.out.println("--------- Estas son todas las peliculas -------");
                     tienda.mostrarPeliculas();
+                    System.out.println("[1] Ordenar peliculas   [2] Salir");
+                    int eleccion = entrada.nextInt();
+                    if (eleccion == 1) {
+                        //ORDENAAAAR
+                    }
+
+                    
                     break;
                 case 4:
                     if (tienda.hayEspacioPeliculas()) {
@@ -41,8 +49,15 @@ public class Menu {
                     }
                     break;
                 case 5:
+                    if (tienda.hayEspacioClientes()) {
+                        pedirDatosCliente();
+                    } else {
+                        System.out.println("Ya no se pueden registrar mas clientes");
+                    }
                     break;
                 case 6:
+                    System.out.println("--------- Estos son todos los clientes ----------");
+                    tienda.mostrarClientes();
                     break;
                 case 7:
                     break;
@@ -75,6 +90,35 @@ public class Menu {
         categoria = elegirCategoria();
 
         tienda.agregarPelicula(id, nombre, anio, categoria);
+    }
+
+    public void pedirDatosCliente() {
+        String nombre;
+        int id;
+        int telefono;
+
+        System.out.println("Ingrese su nombre: ");
+        nombre = entrada.next();
+        System.out.println("Ingrese su ID");
+        id = ingresarIDCliente();
+        System.out.println("Ingrese su numero de telefono");
+        telefono = entrada.nextInt();
+
+        tienda.registrarCliente(nombre, id, telefono);
+    }
+
+    public int ingresarIDCliente() {
+        int id;
+        boolean correcto = false;
+        do {
+            id = entrada.nextInt();
+            if (MetodosBusqueda.busquedaSecuencialNumeros(tienda.obtenerIdClientes(), id) == false) {
+                correcto = true;
+            } else {
+                System.out.println("Este id ya no esta disponible, vuelve a intentarlo");
+            }
+        } while (!correcto);
+        return id;
     }
 
     public int ingresarIDPelicula() {

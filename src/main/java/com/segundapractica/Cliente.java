@@ -11,6 +11,13 @@ public class Cliente {
         this.telefono = telefono;
     }
 
+    @Override
+    public String toString(){
+        return "Nombre: " + this.nombre +
+               "\nId: " + this.id +
+               "\nTelefono: " + this.telefono + "\n";
+    }
+
     public int getId(){
         return this.id;
     }

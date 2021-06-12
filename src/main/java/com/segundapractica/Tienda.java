@@ -9,25 +9,45 @@ public class Tienda {
     private Pelicula[] peliculas = new Pelicula[30];
 
     public void agregarPelicula(int id, String nombre, int anio, String categoria) {
-                Pelicula nuevaPelicula = new Pelicula(id, nombre, anio, categoria);
-                peliculas[contadorPeliculas] = nuevaPelicula;
-                contadorPeliculas++;
-                System.out.println("La pelicula fue agregada correctamente");
+        Pelicula nuevaPelicula = new Pelicula(id, nombre, anio, categoria);
+        peliculas[contadorPeliculas] = nuevaPelicula;
+        contadorPeliculas++;
+        System.out.println("La pelicula fue agregada correctamente");
     }
 
-    public void mostrarPeliculas(){
+    public void mostrarPeliculas() {
         for (int i = 0; i < peliculas.length; i++) {
-            if (peliculas[i]!= null) {
+            if (peliculas[i] != null) {
                 System.out.println(peliculas[i]);
-            }else{
+            } else {
                 break;
             }
         }
     }
 
-    public boolean hayEspacioPeliculas(){
+    public void mostrarClientes() {
+        for (int i = 0; i < clientes.length; i++) {
+            if (clientes[i] != null) {
+                System.out.println(clientes[i]);
+            } else {
+                break;
+            }
+        }
+    }
+
+    public boolean hayEspacioPeliculas() {
         boolean siHay;
-        if (contadorClientes<30) {
+        if (contadorPeliculas < 30) {
+            siHay = true;
+        } else {
+            siHay = false;
+        }
+        return siHay;
+    }
+
+    public boolean hayEspacioClientes() {
+        boolean siHay;
+        if (contadorClientes < 30) {
             siHay = true;
         } else {
             siHay = false;
@@ -50,7 +70,7 @@ public class Tienda {
     public int[] obtenerIdClientes() {
         int[] idClientes = new int[30];
         for (int i = 0; i < idClientes.length; i++) {
-            if (peliculas[i] != null) {
+            if (clientes[i] != null) {
                 idClientes[i] = clientes[i].getId();
             } else {
                 idClientes[i] = 0;
@@ -60,16 +80,11 @@ public class Tienda {
     }
 
     public void registrarCliente(String nombre, int id, int telefono) {
-        if (contadorClientes < 30) {
-            if (MetodosBusqueda.busquedaSecuencialNumeros(obtenerIdClientes(), id) == false) {
-                Cliente nuevoCliente = new Cliente(nombre, id, telefono);
-                clientes[contadorClientes] = nuevoCliente;
-            } else {
-                System.out.println("Este id ya fue utilizado");
-            }
-        } else {
-            System.out.println("Ya no puedes agregar mas clientes [MAX: 30]");
-        }
+
+        Cliente nuevoCliente = new Cliente(nombre, id, telefono);
+        clientes[contadorClientes] = nuevoCliente;
+        contadorClientes++;
+        System.out.println("Se ha registrado correctamente");
     }
 
     public Cliente[] getClientes() {
