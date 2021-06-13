@@ -27,16 +27,21 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Ingresa tu id, para poder identificarte");
+                    int idCliente = entrada.nextInt();
+                    PrestarPelicula prestar = new PrestarPelicula(tienda);
+                    prestar.prestarPelicula(idCliente);
                     break;
                 case 2:
                     break;
                 case 3:
                     System.out.println("--------- Estas son todas las peliculas -------");
-                    tienda.mostrarPeliculas();
+                    tienda.mostrarPeliculas(false);
                     System.out.println("[1] Ordenar peliculas   [2] Salir");
                     int eleccion = entrada.nextInt();
                     if (eleccion == 1) {
-                        //ORDENAAAAR
+                        tienda.ordenarPeliculas();
+                        tienda.mostrarPeliculas(false);
                     }
 
                     
@@ -180,10 +185,6 @@ public class Menu {
         return categoria;
     }
 
-    public void registrarCliente() {
-
-    }
-
     public void prestarPelicula() {
 
     }
@@ -191,9 +192,4 @@ public class Menu {
     public void devolverPelicula() {
 
     }
-
-    public void mostrarPeliculas() {
-
-    }
-
 }

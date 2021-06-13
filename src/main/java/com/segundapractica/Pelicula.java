@@ -14,6 +14,18 @@ public class Pelicula {
         this.categoria = categoria;
     }
 
+    public boolean getDisponible(){
+        return this.disponible;
+    }
+
+    public void setDisponible(boolean disponible){
+        this.disponible = disponible;
+    }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
+
     public int getId(){
         return this.id;
     }

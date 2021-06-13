@@ -1,7 +1,5 @@
 package com.segundapractica;
 
-import javax.swing.plaf.synth.SynthLookAndFeel;
-
 public class Tienda {
     private int contadorPeliculas = 0;
     private int contadorClientes = 0;
@@ -15,10 +13,19 @@ public class Tienda {
         System.out.println("La pelicula fue agregada correctamente");
     }
 
-    public void mostrarPeliculas() {
+    public void mostrarPeliculas(boolean mostrarSoloDisponibles) {
+        boolean mostrarDisponibles = mostrarSoloDisponibles;
+
         for (int i = 0; i < peliculas.length; i++) {
             if (peliculas[i] != null) {
-                System.out.println(peliculas[i]);
+                if (mostrarDisponibles) {
+                    if (peliculas[i].getDisponible()) {
+                        System.out.println(peliculas[i]);
+                    }
+                } else {
+                    System.out.println(peliculas[i]);
+                }
+
             } else {
                 break;
             }
@@ -72,8 +79,6 @@ public class Tienda {
         for (int i = 0; i < idClientes.length; i++) {
             if (clientes[i] != null) {
                 idClientes[i] = clientes[i].getId();
-            } else {
-                idClientes[i] = 0;
             }
         }
         return idClientes;
@@ -93,5 +98,31 @@ public class Tienda {
 
     public Pelicula[] getPeliculas() {
         return this.peliculas;
+    }
+
+    public void ordenarPeliculas() {
+        Pelicula[] arreglo = peliculas;
+        boolean continuar = true;
+        int contador = 0;
+        while (contador < arreglo.length - 1 && continuar) {
+            int intercambios = 0;
+            for (int i = 0; i < arreglo.length - 1 - contador; i++) {
+                if (arreglo[i + 1] == null) {
+                    continuar = false;
+                    break;
+                } else {
+                    Pelicula parte1 = arreglo[i];
+                    Pelicula parte2 = arreglo[i + 1];
+                    if (parte1.getNombre().compareToIgnoreCase(parte2.getNombre()) > 0) {
+                        arreglo[i] = parte2;
+                        arreglo[i + 1] = parte1;
+                        intercambios++;
+                    }
+                }
+            }
+
+            continuar = intercambios > 0;
+            contador++;
+        }
     }
 }

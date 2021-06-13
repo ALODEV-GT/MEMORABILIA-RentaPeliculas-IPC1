@@ -21,4 +21,12 @@ public class Cliente {
     public int getId(){
         return this.id;
     }
+
+    public boolean getTienePeliculaPrestado(){
+        return this.tienePeliculaPrestado;
+    }
+
+    public void setTienePeliculaPrestado(boolean prestar){
+        this.tienePeliculaPrestado = prestar;
+    }
 }
