@@ -27,10 +27,15 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingresa tu id, para poder identificarte");
-                    int idCliente = entrada.nextInt();
-                    PrestarPelicula prestar = new PrestarPelicula(tienda);
-                    prestar.prestarPelicula(idCliente);
+                    if (tienda.hayEspacioRegistros()) {
+                        System.out.println("Ingresa tu id, para poder identificarte");
+                        int idCliente = entrada.nextInt();
+                        PrestarPelicula prestar = new PrestarPelicula(tienda);
+                        prestar.prestarPelicula(idCliente);
+                    } else {
+                        System.out.println("Ya no se puede prestaro mas, ya no hay espacio en la tabal de registros");
+                    }
+
                     break;
                 case 2:
                     break;
@@ -44,7 +49,6 @@ public class Menu {
                         tienda.mostrarPeliculas(false);
                     }
 
-                    
                     break;
                 case 4:
                     if (tienda.hayEspacioPeliculas()) {

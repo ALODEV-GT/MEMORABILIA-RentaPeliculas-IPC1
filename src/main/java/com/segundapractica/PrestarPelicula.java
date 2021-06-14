@@ -53,6 +53,10 @@ public class PrestarPelicula {
                 System.out.println("No existe ninguna pelicula con este id, vuelve a intentarlo");
             }
         } while (!existe);
+        System.out.println("Por cuantos dias lo prestara?");
+        int diasPrestados = entrada.nextInt();
+        RegistroPrestamo nuevoRegistro = new RegistroPrestamo(clientePrestando.getId(), idPelicula, diasPrestados);
+        tienda.agregarRegistro(nuevoRegistro);
         System.out.println("Prestado correctamente... :) ");
     }
 

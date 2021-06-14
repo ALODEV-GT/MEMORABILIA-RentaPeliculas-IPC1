@@ -3,14 +3,21 @@ package com.segundapractica;
 public class Tienda {
     private int contadorPeliculas = 0;
     private int contadorClientes = 0;
+    private int contadorRegistros = 0;
     private Cliente[] clientes = new Cliente[30];
     private Pelicula[] peliculas = new Pelicula[30];
+    private RegistroPrestamo[] registros = new RegistroPrestamo[30];
 
     public void agregarPelicula(int id, String nombre, int anio, String categoria) {
         Pelicula nuevaPelicula = new Pelicula(id, nombre, anio, categoria);
         peliculas[contadorPeliculas] = nuevaPelicula;
         contadorPeliculas++;
         System.out.println("La pelicula fue agregada correctamente");
+    }
+
+    public void agregarRegistro(RegistroPrestamo nuevoRegistro){
+        registros[contadorRegistros] = nuevoRegistro;
+        contadorRegistros++;
     }
 
     public void mostrarPeliculas(boolean mostrarSoloDisponibles) {
@@ -45,6 +52,16 @@ public class Tienda {
     public boolean hayEspacioPeliculas() {
         boolean siHay;
         if (contadorPeliculas < 30) {
+            siHay = true;
+        } else {
+            siHay = false;
+        }
+        return siHay;
+    }
+
+    public boolean hayEspacioRegistros(){
+        boolean siHay;
+        if (contadorRegistros < 30) {
             siHay = true;
         } else {
             siHay = false;
