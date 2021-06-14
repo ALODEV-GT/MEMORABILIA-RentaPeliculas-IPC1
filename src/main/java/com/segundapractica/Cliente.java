@@ -18,6 +18,10 @@ public class Cliente {
                "\nTelefono: " + this.telefono + "\n";
     }
 
+    public String getNombre(){
+        return this.nombre;
+    }
+
     public int getId(){
         return this.id;
     }

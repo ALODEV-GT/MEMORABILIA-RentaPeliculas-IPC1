@@ -6,7 +6,7 @@ public class Tienda {
     private int contadorRegistros = 0;
     private Cliente[] clientes = new Cliente[30];
     private Pelicula[] peliculas = new Pelicula[30];
-    private RegistroPrestamo[] registros = new RegistroPrestamo[30];
+    private RegistroPrestamo[] registros = new RegistroPrestamo[60];
 
     public void agregarPelicula(int id, String nombre, int anio, String categoria) {
         Pelicula nuevaPelicula = new Pelicula(id, nombre, anio, categoria);
@@ -15,7 +15,11 @@ public class Tienda {
         System.out.println("La pelicula fue agregada correctamente");
     }
 
-    public void agregarRegistro(RegistroPrestamo nuevoRegistro){
+    public RegistroPrestamo[] getRegistrosPrestamo(){
+        return this.registros;
+    }
+
+    public void agregarRegistro(RegistroPrestamo nuevoRegistro) {
         registros[contadorRegistros] = nuevoRegistro;
         contadorRegistros++;
     }
@@ -59,7 +63,7 @@ public class Tienda {
         return siHay;
     }
 
-    public boolean hayEspacioRegistros(){
+    public boolean hayEspacioRegistros() {
         boolean siHay;
         if (contadorRegistros < 30) {
             siHay = true;
@@ -67,6 +71,20 @@ public class Tienda {
             siHay = false;
         }
         return siHay;
+    }
+
+    public void mostrarRegistroPrestamos(boolean mostrarFinalizados) {
+        for (int i = 0; i < registros.length; i++) {
+            if (registros[i] != null) {
+                if (mostrarFinalizados) {
+                    System.out.println(registros[i]);
+                } else {
+                    if (!registros[i].getFinalizado()) {
+                        System.out.println(registros[i]);
+                    }
+                }
+            }
+        }
     }
 
     public boolean hayEspacioClientes() {

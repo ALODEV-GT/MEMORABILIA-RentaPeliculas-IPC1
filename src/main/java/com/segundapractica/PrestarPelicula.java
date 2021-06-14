@@ -35,6 +35,7 @@ public class PrestarPelicula {
         tienda.mostrarPeliculas(true);
         System.out.println("Escribe el ID de la pelicula que quieres prestar: ");
 
+        Pelicula peliculaPrestada = null;
         do {
             idPelicula = entrada.nextInt();
             if (MetodosBusqueda.busquedaSecuencialNumeros(tienda.obtenerIdPeliculas(), idPelicula)) {
@@ -43,6 +44,7 @@ public class PrestarPelicula {
                 for (int i = 0; i < peliculas.length; i++) {
                     if (peliculas[i] != null) {
                         if (idPelicula == peliculas[i].getId()) {
+                            peliculaPrestada = peliculas[i];
                             peliculas[i].setDisponible(false);
                         }
                     } else {
@@ -55,7 +57,7 @@ public class PrestarPelicula {
         } while (!existe);
         System.out.println("Por cuantos dias lo prestara?");
         int diasPrestados = entrada.nextInt();
-        RegistroPrestamo nuevoRegistro = new RegistroPrestamo(clientePrestando.getId(), idPelicula, diasPrestados);
+        RegistroPrestamo nuevoRegistro = new RegistroPrestamo(clientePrestando, peliculaPrestada, diasPrestados);
         tienda.agregarRegistro(nuevoRegistro);
         System.out.println("Prestado correctamente... :) ");
     }

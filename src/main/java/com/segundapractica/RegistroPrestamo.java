@@ -1,13 +1,30 @@
 package com.segundapractica;
 
 public class RegistroPrestamo {
-        int idCliente;
-        int idPelicula;
-        int diasPrestados;
+    Cliente cliente;
+    Pelicula pelicula;
+    int diasPrestados;
+    boolean finalizado = false;
 
-        public RegistroPrestamo(int idCliente, int idPelicula, int diasPrestados){
-            this.idCliente = idCliente;
-            this.idPelicula = idPelicula;
-            this.diasPrestados = diasPrestados;
-        }
+    public RegistroPrestamo(Cliente cliente, Pelicula pelicula, int diasPrestados) {
+        this.cliente = cliente;
+        this.pelicula = pelicula;
+        this.diasPrestados = diasPrestados;
+    }
+
+    public int getIDPelicula(){
+        return this.pelicula.getId();
+    }
+
+    public String toString() {
+        return "Pelicula: " + pelicula.getNombre() +" Id pelicula: " + pelicula.getId() +" Nombre del cliente: " + cliente.getNombre();
+    }
+
+    public boolean getFinalizado() {
+        return this.finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
 }

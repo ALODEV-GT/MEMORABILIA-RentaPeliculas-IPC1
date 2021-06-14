@@ -38,6 +38,8 @@ public class Menu {
 
                     break;
                 case 2:
+                        DevolverPelicula devolver = new DevolverPelicula(tienda);
+                        devolver.dovolverPelicula();
                     break;
                 case 3:
                     System.out.println("--------- Estas son todas las peliculas -------");
@@ -162,22 +164,27 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     categoria = "Accion";
+                    Pelicula.contadorAccion++;
                     correcto = true;
                     break;
                 case 2:
                     categoria = "Comedia";
+                    Pelicula.contadorComedio++;
                     correcto = true;
                     break;
                 case 3:
                     categoria = "Romance";
+                    Pelicula.contadorRomance++;
                     correcto = true;
                     break;
                 case 4:
                     categoria = "Animacion";
+                    Pelicula.contadorAnimacion++;
                     correcto = true;
                     break;
                 case 5:
                     categoria = "Terror";
+                    Pelicula.contadorTerror++;
                     correcto = true;
                     break;
                 default:
