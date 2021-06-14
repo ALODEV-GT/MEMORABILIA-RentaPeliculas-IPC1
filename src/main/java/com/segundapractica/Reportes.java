@@ -8,6 +8,7 @@ public class Reportes {
     Pelicula[] peliculas;
     Tienda tienda;
     Cliente clientePrestando;
+    boolean finalizado = false;
 
     public Reportes(Tienda tienda) {
         this.tienda = tienda;
@@ -37,22 +38,62 @@ public class Reportes {
                 tienda.mostrarPeliculas(false);
                 break;
             case 4:
-
+                mostrarPeliculaMasPrestada();
                 break;
             case 5:
-
+                mostrarPeliculaMenosPrestada();
                 break;
             default:
+                finalizado = true;
                 break;
         }
     }
 
+    public boolean getFinalizado(){
+        return this.finalizado;
+    }
+
     public void mostrarPeliculaMasPrestada(){
-        
+        Pelicula peliculaMasPrestada = null;
+        int mayor = 0;
+        for (int i = 0; i < peliculas.length; i++) {
+            if (peliculas[i] != null) {
+                if (peliculas[i].getVecesPrestada() > mayor) {
+                    mayor = peliculas[i].getVecesPrestada();
+                    peliculaMasPrestada = peliculas[i];
+                }
+            }
+        }
+
+        if (mayor == 0) {
+            System.out.println("Todavia no hay una pelicula que destaque");
+        }else{
+            System.out.println("----- PELICULA MAS PRESTADA ---------");
+            System.out.println(peliculaMasPrestada);
+        }
     }
 
     public void mostrarPeliculaMenosPrestada(){
+        Pelicula peliculaMenosPrestada = null;
+        int menor = 100;
 
+        for (int i = 0; i < peliculas.length; i++) {
+            if (peliculas[i] != null) {
+
+                if (peliculas[i].getVecesPrestada() < menor) {
+                    menor = peliculas[i].getVecesPrestada();
+                    peliculaMenosPrestada = peliculas[i];
+                }
+            }
+        }
+
+        if (peliculaMenosPrestada == null) {
+            System.out.println("Todavia no hay peliculas");
+        }else{
+            System.out.println("------- PELICULA MENOS PRESTADA -------- ");
+            System.out.println(peliculaMenosPrestada);
+        }
+        
     }
 
     public void mostrarCantidadPeliculasPorCategoria() {
@@ -96,6 +137,7 @@ public class Reportes {
     }
 
     public void listarPeliculasPorCategoria(String categoria) {
+        System.out.println("-------------------------------------");
         boolean hay = false;
         for (int i = 0; i < peliculas.length; i++) {
             if (peliculas[i] != null) {

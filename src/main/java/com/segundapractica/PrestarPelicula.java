@@ -46,6 +46,7 @@ public class PrestarPelicula {
                         if (idPelicula == peliculas[i].getId()) {
                             peliculaPrestada = peliculas[i];
                             peliculas[i].setDisponible(false);
+                            peliculas[i].prestar();
                         }
                     } else {
                         break;

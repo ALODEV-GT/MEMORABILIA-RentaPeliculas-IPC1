@@ -34,9 +34,12 @@ public class Pelicula {
 
     public void setDisponible(boolean disponible){
         this.disponible = disponible;
-        this.vecesPrestada++;
     }
     
+    public void prestar(){
+        this.vecesPrestada++;
+    }
+
     public String getNombre(){
         return this.nombre;
     }
@@ -51,6 +54,6 @@ public class Pelicula {
                "\nId: " + this.id+
                "\nCategoria: " + this.categoria +
                "\nAnio: " + this.anio + 
-               "\nVeces prestado: " + this.vecesPrestada;                
+               "\nVeces prestado: " + this.vecesPrestada+"\n";                
     }
 }

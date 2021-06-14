@@ -38,8 +38,8 @@ public class Menu {
 
                     break;
                 case 2:
-                        DevolverPelicula devolver = new DevolverPelicula(tienda);
-                        devolver.dovolverPelicula();
+                    DevolverPelicula devolver = new DevolverPelicula(tienda);
+                    devolver.dovolverPelicula();
                     break;
                 case 3:
                     System.out.println("--------- Estas son todas las peliculas -------");
@@ -71,6 +71,13 @@ public class Menu {
                     tienda.mostrarClientes();
                     break;
                 case 7:
+                    boolean finalizado = false;
+                    do {
+                        Reportes reportes = new Reportes(this.tienda);
+                        reportes.menuReportes();
+                        finalizado = reportes.getFinalizado();
+                    } while (finalizado == false);
+
                     break;
                 case 8:
                     // Sale del menu (TERMINA EL PROGRAMA)
