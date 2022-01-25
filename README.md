@@ -6,6 +6,6 @@ Aplicacion simple, simula un control basico para un negocio de renta de pelicula
 ## Vista previa
 <p align="center">
   <kbd>
-    <img src="https://ibb.co/x37RbKC"></img>
+    <img src="https://i.ibb.co/QXK1V7b/memorabilia.png" alt="memorabilia"></img>
   </kbd>
 </p>
